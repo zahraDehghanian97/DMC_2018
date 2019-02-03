@@ -74,11 +74,13 @@ ts_log_diff = ts_log - ts_log.shift()
 ##########Decomposition
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-decomposition = seasonal_decompose(ts_log)
+decomposition = seasonal_decompose(ts_log, model="additive",filt=None,freq=45)
 
 trend = decomposition.trend
 seasonal = decomposition.seasonal
 residual = decomposition.resid
+##yeshanbe
+
 
 plt.subplot(411)
 plt.plot(ts_log, label='Original')
@@ -93,5 +95,5 @@ plt.subplot(414)
 plt.plot(residual, label='Residuals')
 plt.legend(loc='best')
 plt.tight_layout()
-plt.show()
+#plt.show()
 
