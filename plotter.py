@@ -1,8 +1,8 @@
-import DataFinder as df
 import matplotlib.pyplot as plt
-import matplotlib
 
-returnable= df.data_finder(75,70)
+import DataFinder as df
+
+returnable = df.data_finder(75, 70)
 ts = returnable["count"]
 print(ts)
 ###to show remove comment
@@ -13,10 +13,11 @@ print(ts)
 from statsmodels.tsa.stattools import adfuller
 import pandas as pd
 
+
 def test_stationarity(timeseries):
     # Determing rolling statistics
     rolmean = timeseries.rolling(12).mean()
-    rolstd =timeseries.rolling(12).std()
+    rolstd = timeseries.rolling(12).std()
 
     # Plot rolling statistics:
     orig = plt.plot(timeseries, color='blue', label='Original')
@@ -35,6 +36,7 @@ def test_stationarity(timeseries):
         dfoutput['Critical Value (%s)' % key] = value
     print(dfoutput)
 
+
 ###test_stationarity(ts)
 
 #################################eliminating trend
@@ -43,7 +45,7 @@ import numpy as np
 ts_log = np.log(ts)
 
 ########################logarithm
-moving_avg =ts_log.rolling(12).mean()
+moving_avg = ts_log.rolling(12).mean()
 ###plt.plot(ts_log)
 ###plt.plot(moving_avg, color='red')
 ###plt.show()
@@ -74,7 +76,7 @@ ts_log_diff = ts_log - ts_log.shift()
 ##########Decomposition
 from statsmodels.tsa.seasonal import seasonal_decompose
 
-decomposition = seasonal_decompose(ts_log, model="additive",filt=None,freq=45)
+decomposition = seasonal_decompose(ts_log, model="additive", filt=None, freq=45)
 
 trend = decomposition.trend
 seasonal = decomposition.seasonal
@@ -89,11 +91,10 @@ plt.subplot(412)
 plt.plot(trend, label='Trend')
 plt.legend(loc='best')
 plt.subplot(413)
-plt.plot(seasonal,label='Seasonality')
+plt.plot(seasonal, label='Seasonality')
 plt.legend(loc='best')
 plt.subplot(414)
 plt.plot(residual, label='Residuals')
 plt.legend(loc='best')
 plt.tight_layout()
-#plt.show()
-
+# plt.show()
