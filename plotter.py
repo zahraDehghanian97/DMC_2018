@@ -4,8 +4,8 @@ import DataFinder as df
 
 returnable = df.data_finder(75, 70)
 ts = returnable["count"]
-print(ts)
-###to show remove comment
+###print(ts)
+#to show remove comment
 ###plt.plot(ts)
 ###plt.show()
 
@@ -49,7 +49,7 @@ moving_avg = ts_log.rolling(12).mean()
 ###plt.plot(ts_log)
 ###plt.plot(moving_avg, color='red')
 ###plt.show()
-ts_log_moving_avg_diff = ts_log - moving_avg
+###ts_log_moving_avg_diff = ts_log - moving_avg
 ###print("raw data")
 ###print(ts_log_moving_avg_diff.head(12))
 ###ts_log_moving_avg_diff.dropna(inplace=True)
@@ -81,20 +81,22 @@ decomposition = seasonal_decompose(ts_log, model="additive", filt=None, freq=45)
 trend = decomposition.trend
 seasonal = decomposition.seasonal
 residual = decomposition.resid
-##yeshanbe
 
+# # # plt.subplot(411)
+# # # plt.plot(ts_log, label='Original')
+# # # plt.legend(loc='best')
+# # # plt.subplot(412)
+# # # plt.plot(trend, label='Trend')
+# # # plt.legend(loc='best')
+# # # plt.subplot(413)
+# # # plt.plot(seasonal, label='Seasonality')
+# # # plt.legend(loc='best')
+# # # plt.subplot(414)
+# # # plt.plot(residual, label='Residuals')
+# # # plt.legend(loc='best')
+# # # plt.tight_layout()
+# # # plt.show()
+# # # ts_log_decompose = residual
+# # # ts_log_decompose.dropna(inplace=True)
+# # # test_stationarity(ts_log_decompose)
 
-plt.subplot(411)
-plt.plot(ts_log, label='Original')
-plt.legend(loc='best')
-plt.subplot(412)
-plt.plot(trend, label='Trend')
-plt.legend(loc='best')
-plt.subplot(413)
-plt.plot(seasonal, label='Seasonality')
-plt.legend(loc='best')
-plt.subplot(414)
-plt.plot(residual, label='Residuals')
-plt.legend(loc='best')
-plt.tight_layout()
-# plt.show()

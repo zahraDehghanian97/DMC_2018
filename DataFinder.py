@@ -13,14 +13,8 @@ def data_finder(origin, destination):
         if v.empty:
             print("empty")
         else:
-            # for Num, row in v.iterrows():
-            #     returnable.append([row["count"]])
-                #print(matplotlib.dates.datestr2num(row["Log_Date"]))
-                #plt.scatter(matplotlib.dates.datestr2num(row["Log_Date"]), int(row["count"]))
-                #plt.xlabel("date")
-                #plt.ylabel("count")
             return v
 
-    #plt.show()
+
     return z
 
