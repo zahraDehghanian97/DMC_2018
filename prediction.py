@@ -4,7 +4,7 @@ import pandas as pd
 import plotter
 from statsmodels.tsa.stattools import acf, pacf
 
-
+t
 ts_log_diff = plotter.ts_log_diff
 ts_log_diff.dropna(inplace=True)
 lag_acf = acf(ts_log_diff, nlags=20)

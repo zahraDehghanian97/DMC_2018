@@ -1,9 +1,10 @@
 import matplotlib.pyplot as plt
-
 import DataFinder as df
-
+import math as m
 returnable = df.data_finder(75, 70)
 ts = returnable["count"]
+ts_test = ts[m.floor(len(ts)/2): m.floor(len(ts))-1]
+ts = ts[0:m.floor(len(ts)/2)]
 ###print(ts)
 #to show remove comment
 ###plt.plot(ts)
