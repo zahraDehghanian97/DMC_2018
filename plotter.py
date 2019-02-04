@@ -68,9 +68,9 @@ expwighted_avg = ts_log.ewm(halflife=12).mean()
 
 ##########difrencing
 ts_log_diff = ts_log - ts_log.shift()
+ts_log_diff.dropna(inplace=True)
 ###plt.plot(ts_log_diff)
 ###plt.show()
-###ts_log_diff.dropna(inplace=True)
 ###test_stationarity(ts_log_diff)
 
 ##########Decomposition
