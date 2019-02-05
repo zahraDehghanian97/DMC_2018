@@ -4,7 +4,7 @@ import pandas as pd
 import plotter
 from statsmodels.tsa.stattools import acf, pacf
 
-t
+
 ts_log_diff = plotter.ts_log_diff
 ts_log_diff.dropna(inplace=True)
 lag_acf = acf(ts_log_diff, nlags=20)
@@ -17,6 +17,7 @@ plt.axhline(y=0, linestyle='--', color='gray')
 plt.axhline(y=-1.96 / np.sqrt(len(plotter.ts_log_diff)), linestyle='--', color='gray')
 plt.axhline(y=1.96 / np.sqrt(len(plotter.ts_log_diff)), linestyle='--', color='gray')
 plt.title('Autocorrelation Function')
+plt.show()
 
 # Plot PACF:
 plt.subplot(122)
