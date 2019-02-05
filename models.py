@@ -14,24 +14,31 @@ from plotly.plotly import plot_mpl
 # plt.title('AR RSS: %.4f' % sum((results_AR.fittedvalues - plotter.ts_log_diff) ** 2))
 # plt.show()
 
-
-stepwise_model = auto_arima(plotter.ts, start_p=1, start_q=1,
-                           max_p=3, max_q=3, m=12,
-                          start_P=0, seasonal=True,
-                          d=1, D=1, trace=True,
-                         error_action='ignore',
-                        suppress_warnings=True,
-                          stepwise=True)
-
 train = plotter.ts.loc['3/21/2016':'3/21/2017']
+stepwise_model = auto_arima(train, exogenous=None, start_p=2, d=None, start_q=2, max_p=5,
+               max_d=2, max_q=5, start_P=1, D=None, start_Q=1, max_P=2,
+               max_D=1, max_Q=2, max_order=10, m=1, seasonal=True,
+               stationary=False, information_criterion='aic', alpha=0.05,
+               test='kpss', seasonal_test='ch', stepwise=True, n_jobs=1,
+               start_params=None, trend=None, method=None, transparams=True,
+               solver='lbfgs', maxiter=50, disp=0, callback=None,
+               offset_test_args=None, seasonal_test_args=None,
+               suppress_warnings=False, error_action='warn', trace=False,
+               random=False, random_state=None, n_fits=10,
+               return_valid_fits=False, out_of_sample_size=0, scoring='mse',
+               scoring_args=None, with_intercept=True)
+
+
 test= plotter.ts.loc['3/21/2017':]
 
 # print(test)
 # print(train)
+
 stepwise_model.fit(train)
-future_forecast=stepwise_model.predict(n_periods=620)
-future_forecast = pd.DataFrame(future_forecast,index=test.index ,columns=['count'])
+future_forecast =stepwise_model.predict(n_periods=620)
+future_forecast = pd.DataFrame(future_forecast,index=test.index ,columns=['Prediction'])
 pd.concat([test,future_forecast],axis=1).plot()
+print(future_forecast)
 plt.show()
 print('this is the auto arima')
 print(stepwise_model.aic())

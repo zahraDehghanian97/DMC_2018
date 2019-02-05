@@ -4,6 +4,7 @@ import DataFinder as df
 
 returnable = df.data_finder(75, 70)
 ts = returnable["count"]
+ts.to_csv(r'ts.csv')
 ###print(ts)
 #to show remove comment
 ###plt.plot(ts)
@@ -61,7 +62,7 @@ expwighted_avg = ts_log.ewm(halflife=12).mean()
 ###plt.plot(ts_log)
 ###plt.plot(expwighted_avg, color='red')
 ###plt.show()
-###ts_log_ewma_diff = ts_log - expwighted_avg
+ts_log_ewma_diff = ts_log - expwighted_avg
 ###test_stationarity(ts_log_ewma_diff)
 
 #############################################Eliminating Trend and Seasonality
