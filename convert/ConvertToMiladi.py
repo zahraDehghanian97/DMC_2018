@@ -1,4 +1,4 @@
-import convert.Jalali as j
+import Jalali as j
 import pandas as pd
 
 #data should be transofrm before running
