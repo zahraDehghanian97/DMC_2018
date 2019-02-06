@@ -61,7 +61,7 @@ expwighted_avg = ts_log.ewm(halflife=12).mean()
 ###plt.plot(ts_log)
 ###plt.plot(expwighted_avg, color='red')
 ###plt.show()
-###ts_log_ewma_diff = ts_log - expwighted_avg
+ts_log_ewma_diff = ts_log - expwighted_avg
 ###test_stationarity(ts_log_ewma_diff)
 
 #############################################Eliminating Trend and Seasonality
@@ -82,21 +82,21 @@ trend = decomposition.trend
 seasonal = decomposition.seasonal
 residual = decomposition.resid
 
-# # # plt.subplot(411)
-# # # plt.plot(ts_log, label='Original')
-# # # plt.legend(loc='best')
-# # # plt.subplot(412)
-# # # plt.plot(trend, label='Trend')
-# # # plt.legend(loc='best')
-# # # plt.subplot(413)
-# # # plt.plot(seasonal, label='Seasonality')
-# # # plt.legend(loc='best')
-# # # plt.subplot(414)
-# # # plt.plot(residual, label='Residuals')
-# # # plt.legend(loc='best')
-# # # plt.tight_layout()
-# # # plt.show()
-# # # ts_log_decompose = residual
-# # # ts_log_decompose.dropna(inplace=True)
-# # # test_stationarity(ts_log_decompose)
+plt.subplot(411)
+plt.plot(ts_log, label='Original')
+plt.legend(loc='best')
+plt.subplot(412)
+plt.plot(trend, label='Trend')
+plt.legend(loc='best')
+plt.subplot(413)
+plt.plot(seasonal, label='Seasonality')
+plt.legend(loc='best')
+plt.subplot(414)
+plt.plot(residual, label='Residuals')
+plt.legend(loc='best')
+plt.tight_layout()
+plt.show()
+ts_log_decompose = residual
+ts_log_decompose.dropna(inplace=True)
+test_stationarity(ts_log_decompose)
 

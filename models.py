@@ -15,7 +15,7 @@ from plotly.plotly import plot_mpl
 # plt.show()
 
 
-stepwise_model = auto_arima(plotter.ts, start_p=1, start_q=1,
+stepwise_model = auto_arima(plotter.ts_log_ewma_diff, start_p=1, start_q=1,
                            max_p=3, max_q=3, m=12,
                           start_P=0, seasonal=True,
                           d=1, D=1, trace=True,
@@ -23,8 +23,8 @@ stepwise_model = auto_arima(plotter.ts, start_p=1, start_q=1,
                         suppress_warnings=True,
                           stepwise=True)
 
-train = plotter.ts.loc['3/21/2016':'3/21/2017']
-test= plotter.ts.loc['3/21/2017':]
+train = plotter.ts_log_ewma_diff.loc['3/21/2016':'3/21/2017']
+test= plotter.ts_log_ewma_diff.loc['3/21/2017':]
 
 # print(test)
 # print(train)
