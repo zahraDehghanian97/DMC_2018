@@ -100,7 +100,6 @@ ts_log_decompose = residual
 ts_log_decompose.dropna(inplace=True)
 test_stationarity(ts_log_decompose)
 
-=======
 import matplotlib.pyplot as plt
 
 import DataFinder as df
@@ -201,4 +200,4 @@ plt.plot(residual, label='Residuals')
 plt.legend(loc='best')
 plt.tight_layout()
 # plt.show()
->>>>>>> f46b5d1194c507393acbb033275381d767c80188
+

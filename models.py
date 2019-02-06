@@ -28,21 +28,8 @@ stepwise_model = auto_arima(train, exogenous=None, start_p=2, d=None, start_q=2,
                return_valid_fits=False, out_of_sample_size=0, scoring='mse',
                scoring_args=None, with_intercept=True)
 
-<<<<<<< HEAD
-stepwise_model = auto_arima(plotter.ts_log_ewma_diff, start_p=1, start_q=1,
-                           max_p=3, max_q=3, m=12,
-                          start_P=0, seasonal=True,
-                          d=1, D=1, trace=True,
-                         error_action='ignore',
-                        suppress_warnings=True,
-                          stepwise=True)
-
-train = plotter.ts_log_ewma_diff.loc['3/21/2016':'3/21/2017']
-test= plotter.ts_log_ewma_diff.loc['3/21/2017':]
-=======
 
 test= plotter.ts.loc['3/21/2017':]
->>>>>>> f46b5d1194c507393acbb033275381d767c80188
 
 # print(test)
 # print(train)
